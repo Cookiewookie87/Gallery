@@ -18,7 +18,7 @@ function randomNumber (max) {
     return Math.floor((Math.random() * max) + 1);;
 }
 
-let arrGenerator = Array.from({ length: 50 }, () => [randomNumber(4), randomNumber(4)]);
+let arrGenerator = Array.from({ length: 50 }, () => [randomNumber(4), randomNumber(4)]).concat([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]);
 
 let htmlConstructor = arrGenerator.map(htmlGenerator).join("");
 gallery.innerHTML = htmlConstructor;

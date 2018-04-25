@@ -3,8 +3,7 @@
 }
 
 body {
-    padding: 0;
-    margin: 0;
+    padding: 50px;
     font-family: sans-serif;
     background: linear-gradient(to right, #F93D66, #6D47D9);
 }
@@ -29,24 +28,66 @@ p {
 }
 
 .gallery {
-    display: flex;
-    flex-flow: row wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    grid-auto-flow: dense;
     .item {
-        flex: auto;
-        width: 200px;
-        position: relative;
-        .item-overlay {
-            position: absolute;
-            top: 0;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 1;
+        grid-template-rows: 1;
+        &.v2 {
+          grid-row: span 2;
+        }
+        &.v3 {
+          grid-row: span 3;
+        }
+        &.v4 {
+          grid-row: span 4;
+        }
+        &.h2 {
+          grid-column: span 2;
+        }
+        &.h3 {
+          grid-column: span 3;
+        }
+        &.h4 {
+          grid-column: span 4;
+        }
+        img {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
             width: 100%;
             height: 100%;
+            object-fit: cover;
+        }
+        .item-overlay {
+            grid-column: 1 / -1;
+            grid-row: 1 / -1;
+            background-color: #ffc60032;
+            position: relative;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            transform: translateY(100%);
+            transition: 0.2s;
+            button {
+                border: 2px solid white;
+                color: white;
+                text-transform: uppercase;
+                padding: 5px;
+                background: rgba(0, 0, 0, 0.3);
+            }
+        }
+        &:hover .item-overlay{
+            transform: translateY(0);
         }
     }
-    img {
-        width: 100%;
-        height: 100%;
-    }
+    
 }
+
+
 
 .overlay {
     position: fixed;
@@ -57,15 +98,18 @@ p {
     left: 0;
     display: none;
     z-index: 2;
-    .open {
-      display: grid;
-    }
-    figure {
-        background: white;
-        width: 700px;
-        padding: 20px;
-    }
-    img {
-        width: 100%;
-    }
+}
+
+.overlay.open {
+    display: grid;
+}
+
+.overlay figure {
+    background: white;
+    width: 700px;
+    padding: 20px;
+}
+
+.overlay img {
+    width: 100%;
 }
