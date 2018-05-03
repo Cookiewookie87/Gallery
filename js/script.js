@@ -20,12 +20,19 @@ function buttonClick (e) {
     const pictureSrc = e.currentTarget.querySelector('img').src;
     overlayImage.src = pictureSrc;
     overlay.classList.add("open");
-
 }
+/*
+function nextGalleryPic (e) {
+    let currentPic = e.currentTarget.querySelector('img').src;
+    let nextPic = e.currentTarget.nextElementSibling.querySelector('img').src;
+    overlayImage.src = nextPic;
+    console.log(currentPic);
+    console.log(nextPic);
+}
+*/
 function closeImage () {
     overlay.classList.remove("open");
 }
-
 
 let arrGenerator = Array.from({ length: 50 }, () => [randomNumber(4), randomNumber(4)]).concat([[1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1], [1, 1]]);
 
@@ -35,5 +42,6 @@ gallery.innerHTML = htmlConstructor;
 const items = document.querySelectorAll('.item');
 
 items.forEach(item => item.addEventListener("click", buttonClick));
+//items.forEach(item => item.addEventListener("keydown", nextGalleryPic));
 
 overlayClose.addEventListener("click", closeImage);
